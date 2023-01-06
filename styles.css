@@ -41,8 +41,9 @@
     --header-height: 56px;
     --sidebar-width: 240px;
     --z-tooltip: 25;
-    --x-fixed: 100;
-    --border-radius: 100px;
+    --z-fixed: 100;
+    --border-radius: 2px;
+    --border-radius-search: 100px;
     --transition-time: 0.25s;
 
     /* Scroll */
@@ -57,7 +58,9 @@
 body {
     font-family: var(--body-font);
     background-color: var(--bg-color-alt);
-    min-height: 200vh;
+    line-height: 1.15rem;
+    padding-top: var(--header-height);
+    padding-left: var(--sidebar-width);
 }
 
 h1, h2, h3, h4, h5, h6, b {
@@ -80,6 +83,10 @@ hr {
     padding-top: var(--spacing);
 }
 
+.flex {
+    display: flex;
+}
+
 .place-center {
     display: flex;
     justify-content: center;
@@ -89,6 +96,27 @@ hr {
 .buttons-container {
     display: flex;
     gap: 0.5rem;
+}
+
+/* --- Classes To Trim Lines Of Text --- */
+
+[class*='rows-text'] {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.rows-text-1 {
+    --rows: 1;
+}
+
+.rows-text-2 {
+    --rows: 2;
+}
+
+.rows-text-3 {
+    --rows: 3;
 }
 
 /* --- Scroll --- */
@@ -143,7 +171,7 @@ hr {
 
 .main-header .middle {
     flex-basis: 720px;
-    padding: 2rem;
+    padding: 0 2rem;
 }
 
 .main-header .form-search {
@@ -156,7 +184,7 @@ hr {
     padding: 0.5rem;
     border: 1px solid var(--border-color);
     border-right: 0;
-    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    border-radius: var(--border-radius-search) 0 0 var(--border-radius-search);
 }
 
 .main-header .submit {
@@ -164,7 +192,8 @@ hr {
     border: 1px solid var(--border-color);
     color: var(--text-color-alt);
     font-size: 1.25rem;
-    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    border-radius: 0 var(--border-radius-search) var(--border-radius-search) 0;
+    cursor: pointer;
 }
 
 .main-header .user {
@@ -240,12 +269,14 @@ hr {
     z-index: var(--z-tooltip);
 }
 
-/* --- Lateral Menu --- */
+/* --- Side Menu --- */
 
 .main-sidebar {
     --main-nav-padding: 0.5rem 1.5rem;
     position: fixed;
     top: var(--header-height);
+    left: 0;
+    z-index: 1;
     height: calc(100vh - var(--header-height));
     width: var(--sidebar-width);
     background-color: var(--bg-color);
@@ -262,6 +293,7 @@ hr {
     color: var(--text-color);
     font-size: var(--small-font-size);
     text-decoration: none;
+    white-space: nowrap;
 }
 
 .main-nav .link.is-active,
@@ -276,6 +308,7 @@ hr {
 /* --- Navigation Icons --- */
 
 .main-nav .link .icon {
+    margin-right: 1.5rem;
     font-size: 1.5rem;
     color: var(--text-color-alt);
 }
@@ -342,5 +375,74 @@ hr {
     opacity: 0.6;
     color: var(--text-color-alt);
     margin: 0;
+}
 
+/* --- Video Card --- */
+
+.card-video a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-video .cover {
+    display: block;
+    position: relative;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 0.75rem;
+}
+
+.card-video .image {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-video .time {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    padding: 0 0.25rem;
+    background-color: rgba(0,0,0,0.75);
+    color: var(--text-color-white);
+    font-size: var(--smaller-font-size);
+    border-radius: var(--border-radius);
+}
+
+.card-video .user-avatar {
+    --size: 36px;
+    margin-right: 0.75rem;
+}
+
+.card-video .content {
+    font-size: var(--small-font-size);
+    color: var(--text-color-alt);
+}
+
+.card-video .title {
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+}
+
+/* --- Video Information --- */
+
+.video-information .views {
+    display: inline-flex;
+}
+
+.video-information .views::after {
+    content: '\e91b';
+    padding: 0 0.25rem;
+    font-family: var(--icon-font);
+    font-size: 0.25rem;
+}
+
+/* --- Videos Grid --- */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem 1rem;
+    padding: 1rem 2rem;
+    max-width: 1900px;
+    margin-inline: auto;
 }
