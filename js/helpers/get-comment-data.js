@@ -1,4 +1,4 @@
-import {getRandom} from "/js/helpers/random.js";
+import {getRandom} from "./helpers/random.js";
 
 const comments = [
   'totalmente de acuerdo, cuando tengo reuniones en la tarde ya no puedo agarrar el Flow otra vez por lo que pierdo medio día de trabajo.',
