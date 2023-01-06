@@ -1,4 +1,4 @@
-import {getRandom} from "./helpers/random.js";
+import {getRandom} from "../helpers/random.js";
 
 export const cardData = () => {
   const list = ["minutes", "weeks", "months", "years"];
