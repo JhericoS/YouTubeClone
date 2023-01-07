@@ -83,6 +83,10 @@ hr {
     padding-top: var(--spacing);
 }
 
+hr.big {
+    margin-bottom: 1rem;
+}
+
 .flex {
     display: flex;
 }
@@ -219,23 +223,45 @@ hr {
 
 /* --- Action Buttons --- */
 
-.action-button {
+.action-button,
+.action-button .icon {
     --size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: var(--size);
-    width: var(--size);
-    border-radius: 50%;
     border: 1px solid transparent;
     background: none;
     cursor: pointer;
     transition: border-color var(--transition-time);
 }
 
-.action-button::before {
+.action-button.has-text {
+    text-transform: uppercase;
+    color: var(--text-color-alt);
+    font-weight: var(--font-bold);
+    font-size: var(--small-font-size);
+}
+
+.action-button.has-text .icon {
+    --size: 2.25rem;
+    color: var(--grey-color);
+}
+
+.action-button:not(.has-text),
+.action-button .icon {
+    width: var(--size);
+    border-radius: 50%;
+}
+
+.action-button::before,
+.action-button .icon {
     color: var(--text-color-alt);
     font-size: 1.5rem;
 }
 
-.action-button:active {
+.action-button:not(.has-text):active,
+.action-button .icon:active {
     background-color: var(--bg-color-active);
     border-color: var(--bg-color-active) ;
 }
@@ -267,6 +293,35 @@ hr {
     pointer-events: none;
     transition: opacity var(--transition-time);
     z-index: var(--z-tooltip);
+}
+
+/* --- Basic Button --- */
+
+.button {
+    --button-color: #cc0000;
+    --text-button-color: white;
+    --cursor-button: pointer;
+
+    padding: 0.5rem 1rem;
+    background-color: var(--button-color);
+    color: var(--text-button-color);
+    text-transform: uppercase;
+    font-size: var(--small-font-size);
+    font-weight: var(--font-bold);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: var(--cursor-button);
+}
+
+.button[disabled] {
+    --button-color: var(--bg-color-active);
+    --text-button-color: var(--grey-color);
+    --cursor-button: initial;
+}
+
+.button.link {
+    --text-button-color: var(--text-color-alt);
+    --button-color: transparent;
 }
 
 /* --- Side Menu --- */
@@ -423,6 +478,30 @@ hr {
     margin-bottom: 0.25rem;
 }
 
+/* --- Sidebar Card Video --- */
+
+.cards-sidebar {
+    display: grid;
+    gap: 1rem;
+    grid-column-start: span 3;
+}
+
+.card-video.in-sidebar {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+}
+
+.card-video.in-sidebar .cover {
+    margin-bottom: 0;
+    min-width: 200px;
+    max-width: 250px;
+}
+
+.card-video.in-sidebar .content {
+    flex-grow: 1;
+}
+
 /* --- Video Information --- */
 
 .video-information .views {
@@ -445,4 +524,204 @@ hr {
     padding: 1rem 2rem;
     max-width: 1900px;
     margin-inline: auto;
+}
+
+/* --- Video Page --- */
+
+body.video-page {
+    padding-left: 0;    
+}
+
+.video-page-grid {
+    --gap-page: 1.5rem;
+    width: calc(100% - (var(--gap-page) * 2));
+    max-width: 1600px;
+    display: grid;
+    gap: var(--gap-page);
+    grid-template-columns: repeat(11, 1fr);
+    margin-inline: auto;
+    padding-top: var(--gap-page);
+}
+
+.video-column {
+    grid-column-start: span 8;
+}
+
+.video-player .video {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.video-player .title {
+    font-weight: normal;
+    font-size: var(--big-font-size);
+}
+
+.video-player .video-information {
+    font-size: var(--small-font-size);
+    color: var(--text-color-alt);
+}
+
+.video-player .actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.video-player .buttons-container.likes {
+    border-bottom: 2px solid var(--grey-color);
+}
+
+.video-player .border {
+    padding-top: 0;
+}
+
+/* --- Video Information Styles --- */
+
+.video-player-information {
+    gap: 1rem;
+    color: var(--text-color);
+}
+
+.video-player-information .user-avatar {
+    --size: 3rem;
+}
+
+.video-player-information .content {
+    width: 100%;
+}
+
+.video-player-information .channel-name {
+    color: inherit;
+    text-decoration: none;
+    font-size: var(--small-font-size);
+    font-weight: var(--font-bold);
+}
+
+.video-player-information .subs-count {
+    color: var(--text-color-alt);
+    font-size: var(--smaller-font-size);
+}
+
+.video-player-information .header {
+    margin-bottom: 1rem;
+}
+
+.video-player-information .header .button {
+    margin-left: auto;
+}
+
+.video-player-information .caption {
+    max-width: 600px;
+    line-height: 1.25rem;
+    font-size: var(--small-font-size);
+}
+
+/* --- Comments Section --- */
+
+.comments-information {
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.comment-form {
+    gap: 1rem;
+}
+
+.comment-form .form {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.comment-form .input {
+    position: relative;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+    font-size: var(--small-font-size);
+    box-shadow: 0 -1px inset var(--grey-color);
+    outline: none;
+}
+
+.comment-form .input:empty::before {
+    content: 'Add a comment...';
+}
+
+.comment-form .input:not(:empty) ~ .buttons-container .button[disabled] {
+    background-color: var(--new-video-color);
+    color: white;
+}
+
+.comment-form .input::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    transition: left var(--transition-time), width var(--transition-time);
+}
+
+.comment-form .input:focus::after {
+    width: 100%;
+    left: 0;
+}
+
+.comment-form .user-avatar {
+    --size: 2.5rem;
+}
+
+.comment-form .buttons-container {
+    margin-left: auto;
+}
+
+/* --- Comment Component --- */
+
+.comments-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.comment {
+    gap: 1rem;
+    font-size: var(--small-font-size);
+}
+
+.comment .user-avatar {
+    --size: 2.5rem;
+}
+
+.comment .header {
+    font-size: var(--smaller-font-size);
+}
+
+.comment .name {
+    margin-right: 0.25rem;
+    text-decoration: none;
+    color: var(--text-color)
+}
+
+.comment .time {
+    color: var(--text-color-alt);
+}
+
+.comment .buttons-container {
+    margin-left: -0.5rem;
+}
+
+.comment .action-button,
+.comment .action-button .icon {
+    --size: 2rem;
+    font-size: var(--normal-font-size);
+}
+
+.comment .action-button:hover,
+.comment .action-button:hover .icon {
+    color: var(--text-color-alt);
+}
+
+.comment .action-button .text {
+    font-size: var(--smaller-font-size);
 }

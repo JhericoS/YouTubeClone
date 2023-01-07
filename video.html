@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube JhericoS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="icons/styles.css">
+</head>
+<body class="video-page scroll">
+    <header class="main-header">
+        <!-- #Left -->
+        <div class="start place-center">
+            <button class="action-button icon-menu"></button>
+            <a href="/">
+                <img class="logo" src="img/logo.svg" alt="Youtube logo">
+            </a>
+        </div>
+
+        <!-- #Center -->
+        <div class="middle place-center">
+            <form class="form-search place-center" action="#">
+                <input type="search" placeholder="Search" class="input">
+                <button data-tooltip="Search" class="submit icon-search"></button>
+            </form>
+            <button data-tooltip="Search with your voice" class="action-button icon-microphone"></button>
+        </div>
+
+        <!-- #Right -->
+        <div class="place-center buttons-container">
+            <button data-tooltip="Create" class="action-button icon-camera"></button>
+            <button data-tooltip="YouTube apps" class="action-button icon-grid"></button>
+            <button data-tooltip="Notifications" class="action-button icon-bell"></button>
+            <div class="user">
+                <div class="user-avatar">
+                    <img class="image" src="https://news.artnet.com/app/news-upload/2019/01/Cat-Photog-Feat-256x256.jpg" alt="User photo">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="video-page-grid">
+        <main class="video-column">
+            <section class="video-player">
+                <iframe class="video" src="https://www.youtube.com/embed/V5WwEENaDMI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <h1 class="title">What If You Become Immortal Forever?</h1>
+                <div class="actions">
+                    <p class="video-information">
+                        <span class="views">8.9M views</span>
+                        <span>Aug 17, 2021</span>
+                    </p>
+                    <div class="buttons-container">
+                        <div class="buttons-container likes">
+                            <button data-tooltip="I like this" class="action-button has-text">
+                                <span class="icon icon-like-video"></span>
+                                <span>191k</span>
+                            </button>
+                            <button data-tooltip="I dislike this" class="action-button has-text">
+                                <span class="icon icon-dislike-video"></span>
+                            </button>
+                        </div>
+                        <button data-tooltip="Share" class="action-button has-text">
+                            <span class="icon icon-share"></span>
+                            <span>Share</span>
+                        </button>
+                        <button data-tooltip="Save" class="action-button has-text">
+                            <span class="icon icon-add-list"></span>
+                            <span>Save</span>
+                        </button>
+                        <button class="action-button icon icon-horizontal-dots"></button>
+                    </div>
+                </div>
+                <hr class="border"/>
+            </section>
+            <section class="video-player-information flex">
+                <div class="user-avatar">
+                    <img class="image" src="https://yt3.ggpht.com/ytc/AMLnZu9QvHYW3UWZsqoRnXHw-0ss7AONGZSx0uEJVyf9-Q=s176-c-k-c0x00ffffff-no-rj" alt="User photo">
+                </div>
+                <div class="content">
+                    <header class="header flex">
+                        <div>
+                            <a href="#" class="channel-name" data-tooltip="Meet Arnold">Meet Arnold</a>
+                            <p class="subs-count">3.58M subscribers</p>
+                        </div>
+                        <button class="button">Subscribe</button>
+                    </header>
+                    <p class="caption rows-text-3">Subscribe Here: <a href="#">https://www.youtube.com/channel/UCY3T...</a><br>
+                        Thanks to Everyone Watching Arnold's 4th Year!: <a href="#">https://youtu.be/evZVCBWP3OA?list=PLA...</a><br>
+                        What If You Become Immortal Forever? <br>
+                        Don't forget to turn on notifications, like, & subscribe!</p>
+                    <button class="action-button has-text">
+                        <span>Show more</span>
+                    </button>
+                </div>
+            </section>
+            <hr class="big"></hr>
+            <section class="comment-section">
+                <header class="comments-information buttons-container">
+                    <p>10,555 Comments</p>
+                    <button class="action-button has-text">
+                        <span class="icon icon-filter"></span>
+                        <span>Sort by</span>
+                    </button>
+                </header>
+                <div class="comment-form flex">
+                    <div class="user-avatar">
+                        <img class="image" src="https://news.artnet.com/app/news-upload/2019/01/Cat-Photog-Feat-256x256.jpg" alt="User photo">
+                    </div>
+                    <div class="form">
+                        <div class="input" contenteditable></div>
+                        <div class="buttons-container">
+                            <button class="button link">Cancel</button>
+                            <button class="button" disabled>Comment</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="comments-grid" id="comments-grid">
+                    <!-- Comment render -->
+                </div>
+            </section>
+        </main>
+        <aside class="cards-sidebar" id="card-grid">
+            <!-- Side cards render -->
+        </aside>
+    </div>
+    <script src="js/scripts/comment.js" type="module"></script>
+    <script src="js/scripts/cards.js" type="module"></script>
+</body>
+</html>

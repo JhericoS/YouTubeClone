@@ -9,7 +9,7 @@ export const cardVideo = (data) => `
     </div>
     <div class="content">
       <h3 class="title rows-text-2">
-        <a href="/video.html">#JhericoS - Este es un video random</a>
+        <a href="/video.html">#JhericoS - This video is an example for YouTube Clone</a>
       </h3>
       <a href="#">Jherico Solier</a>
       <p class="video-information">
